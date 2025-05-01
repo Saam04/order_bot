@@ -19,22 +19,22 @@ def handle_command(command: str):
         item = cmd[5:].strip()
         orders.append(item)
         save_orders(orders)
-        send_to_group(f"✅ Added: {item}")
+        send_to_group(f"Added: {item}")
 
     elif cmd.startswith("#delete "):
         item = cmd[8:].strip()
         if item in orders:
             orders.remove(item)
             save_orders(orders)
-            send_to_group(f"❌ Deleted: {item}")
+            send_to_group(f"Deleted: {item}")
         else:
-            send_to_group(f"⚠️ Item not found: {item}")
+            send_to_group(f"Item not found: {item}")
 
     elif cmd == "#list":
         if orders:
-            msg = "**📝 Order List:**\n" + "\n".join([f"{i+1}. {item}" for i, item in enumerate(orders)])
+            msg = "**Order List:**\n" + "\n".join([f"{i+1}. {item}" for i, item in enumerate(orders)])
         else:
-            msg = "📭 Order list is empty."
+            msg = "Order list is empty."
         send_to_group(msg)
 
     elif cmd == "#clear":
@@ -46,9 +46,9 @@ def handle_command(command: str):
         if orders:
             removed = orders.pop()
             save_orders(orders)
-            send_to_group(f"↩️ Removed last item: {removed}")
+            send_to_group(f"Removed last item: {removed}")
         else:
-            send_to_group("⚠️ Nothing to undo.")
+            send_to_group("Nothing to undo.")
 
     else:
         send_to_group("❓ Unknown command. Try #add, #list, #delete, #clear, or #undo.")
