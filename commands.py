@@ -5,7 +5,11 @@ from datetime import datetime
 GROUP_ID = "Family Orders"
 
 def send_to_group(message):
-    pywhatkit.sendwhatmsg_to_group_instantly(GROUP_ID, message, wait_time=10, tab_close=True)
+    try:
+        print(f"Sending to group: (GROUP_ID)")
+        pywhatkit.sendwhatmsg_to_group_instantly(GROUP_ID, message, wait_time=15, tab_close=True)
+    except Exception as e:
+        print("Failed to send message: (e)")
 
 def handle_command(command: str):
     orders = load_orders()
