@@ -1,8 +1,24 @@
-venv
-env/
-
-.cache/
-*.log
-
 __pycache__/
 *.py[cod]
+*$py.class
+
+venv/
+env/
+
+
+*.ipynb
+
+.env
+
+
+.cache/
+.cID.txt
+
+# Logs
+*.log
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
