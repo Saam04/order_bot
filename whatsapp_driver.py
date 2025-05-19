@@ -6,8 +6,8 @@ import time
 
 def start_driver():
     options = Options()
-    options.binary_location = "C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe" 
-    options.add_argument("profile-directory=Default")  # Or your custom profile
+    options.binary_location = "C:\Program Files\Google\Chrome\Application\chrome.exe" 
+   # options.add_argument("profile-directory=Default")  # Or your custom profile
     options.add_argument("--start-maximized")  # Or your custom profile
     options.add_argument("--disable-extensions")  # Or your custom profile
     options.add_argument("--no-sandbox")  # Or your custom profile
@@ -18,6 +18,6 @@ def start_driver():
     
     driver.get("https://web.whatsapp.com")
     print("Chrome & WhatsApp both are automated and set")
-    time.sleep(15)  # Time for manual login (or skip if already logged in)
+    time.sleep(100)  # Time for manual login (or skip if already logged in)
 
     return driver
