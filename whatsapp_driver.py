@@ -14,10 +14,14 @@ def start_driver():
     options.add_argument("--disable-dev-shm-usage")  # Or your custom profile
 
     service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(service=service, options=options)
     
-    driver.get("https://web.whatsapp.com")
+    #driver.get("https://web.whatsapp.com")
     print("Chrome & WhatsApp both are automated and set")
-    time.sleep(100)  # Time for manual login (or skip if already logged in)
+    time.sleep(10)  # Time for manual login (or skip if already logged in)
 
     return driver
+
+service = Service(executable_path="chromedriver.exe")
+driver = webdriver.Chrome(service=service,)
+driver.get("https://web.whatsapp.com")
