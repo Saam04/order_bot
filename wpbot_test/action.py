@@ -32,7 +32,16 @@ from utils.whatsapp_helper import WhatsAppBot
 bot = WhatsAppBot(driver)
 bot.open_whatsapp()
 
-contacts = ["Personal"]
-message = "Hello from your friendly automation bot!"
+contacts = ["Ronak Boddu"]
+message = "Hello from the automation bot!"
+
 for name in contacts:
-    bot.send_message(name, message)
+    try:
+        bot.send_message(name, message)
+    except Exception as e:
+        print(f"Error sending to {name}: {e}")
+
+
+    
+
+

@@ -21,14 +21,27 @@ class WhatsAppBot:
             ) 
             search_box.clear()
             search_box.send_keys(contact_name)
-            time.sleep(2)
-            self.driver.find_element(By.XPATH, f'//span[@title="{contact_name}"]').click()
+
+            #time.sleep(2)
+            contact = WebDriverWait(self.driver, 20).until(
+                 EC.element_to_be_clickable((By.XPATH, f'//span[@title="{contact_name}"]'))
+            )
+            contact.click()
+
+            wait = WebDriverWait(self.driver, 20)
+
+            msg_box = wait.until(EC.presence_of_element_located(
+            (By.XPATH, '//div[@contenteditable="true" and @data-tab="10"]')))
+            msg_box.click()
+            time.sleep(0.5)
 
             # Send the message
-            msg_box = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, '//div[@contenteditable="true"][@data-tab="10"]'))
-            )
-            msg_box.send_keys(message + Keys.ENTER)
+            #msg_box = WebDriverWait(self.driver, 20).until(
+             #   EC.presence_of_element_located((By.XPATH, '//div[@contenteditable="true"][@data-tab="10"]'))
+            #)
+            msg_box.send_keys(message + '\n')
             print(f"Message sent to {contact_name}")
         except Exception as e:
             print(f"Failed to send message to {contact_name}: {e}")
+
+
